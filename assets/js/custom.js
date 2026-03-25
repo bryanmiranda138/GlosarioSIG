@@ -275,7 +275,126 @@
         });
     }
 
+// ==========================================
+	// Lógica para el Buscador Multi-página del Glosario
+	// ==========================================
+	$(document).ready(function() {
+		var $input = $('#searchText');
+		var $suggestionsBox = $('#searchSuggestions');
+		var searchIndex = []; 
+		
+		// 1. Array con todas tus vistas HTML donde hay términos
+		var pages = ['index.html', 'iso-ogc.html', 'arcgis.html', 'qgis.html', 'bde-webgis.html'];
+		
+		// Identificar en qué página estamos actualmente
+		var currentPage = window.location.pathname.split("/").pop();
+		if (currentPage === "") currentPage = "index.html"; 
 
+		// 2. Cargar el contenido de las otras páginas en segundo plano (AJAX)
+		pages.forEach(function(page) {
+			$.get(page, function(data) {
+				// Usamos DOMParser para extraer la información de forma segura
+				var parser = new DOMParser();
+				var doc = parser.parseFromString(data, "text/html");
+				
+				// Buscamos los .item en la página descargada
+				$(doc).find('.item').each(function() {
+					var $item = $(this);
+					var itemText = $item.text().toLowerCase();
+					// Asumimos que el título está en un <h4>
+					var itemTitle = $item.find('h4').first().text() || "Término";
+
+					// Guardamos el término en nuestro "diccionario" virtual
+					searchIndex.push({
+						title: itemTitle,
+						text: itemText,
+						page: page
+					});
+				});
+			}).fail(function() {
+				console.log("No se pudo cargar la vista para el buscador: " + page);
+			});
+		});
+
+		// 3. Filtrar términos mientras el usuario escribe
+		$input.on('input', function() {
+			var query = $(this).val().toLowerCase().trim();
+			$suggestionsBox.empty();
+
+			if (query.length > 0) {
+				var matches = searchIndex.filter(function(item) {
+					return item.text.indexOf(query) !== -1;
+				});
+
+				if (matches.length > 0) {
+					matches.forEach(function(match) {
+						var pageName = match.page.replace('.html', '').toUpperCase();
+						// Se añade de qué página viene la sugerencia a la derecha
+						var $suggestion = $('<div class="suggestion-item"></div>')
+							.html('<strong>' + match.title + '</strong> <span style="font-size:10px; color:#aaa; float:right;">(' + pageName + ')</span>');
+						
+						$suggestion.on('click', function() {
+							$suggestionsBox.hide();
+							$input.val(match.title);
+							
+							if (match.page === currentPage) {
+								// Si el término está en la misma página, hacer scroll directo
+								scrollToTerm(match.title);
+							} else {
+								// Si está en otra página, redirigir y enviar el término por la URL
+								window.location.href = match.page + '?scrollTo=' + encodeURIComponent(match.title);
+							}
+						});
+
+						$suggestionsBox.append($suggestion);
+					});
+					$suggestionsBox.fadeIn(200);
+				} else {
+					$suggestionsBox.hide();
+				}
+			} else {
+				$suggestionsBox.hide();
+			}
+		});
+
+		// Ocultar caja al hacer clic fuera del buscador
+		$(document).on('click', function(e) {
+			if (!$(e.target).closest('.search-input').length) {
+				$suggestionsBox.hide();
+			}
+		});
+
+		// 4. Leer la URL por si acabamos de llegar desde otra página mediante una búsqueda
+		var urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.has('scrollTo')) {
+			var termToFind = urlParams.get('scrollTo');
+			// Esperar medio segundo para asegurar que la página renderizó el HTML
+			setTimeout(function() {
+				scrollToTerm(termToFind);
+			}, 500);
+		}
+
+		// 5. Función compartida para animar el scroll y resaltar el elemento
+		function scrollToTerm(termTitle) {
+			$('.item').each(function() {
+				var title = $(this).find('h4').first().text();
+				if (title === termTitle) {
+					$('html, body').animate({
+						scrollTop: $(this).offset().top - 100
+					}, 800);
+					
+					// Efecto de iluminación temporal
+					$(this).css('transition', 'box-shadow 0.5s');
+					$(this).css('box-shadow', '0px 0px 20px #e75e8d');
+					var $thisItem = $(this);
+					setTimeout(function() {
+						$thisItem.css('box-shadow', 'none');
+					}, 2000);
+					return false; // detiene el loop .each()
+				}
+			});
+		}
+	});
 	
 
 

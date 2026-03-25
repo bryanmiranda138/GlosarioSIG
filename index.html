@@ -48,21 +48,22 @@
               <img src="assets/images/logo sig.png" alt="Cyborg Logo"><!-- El logo principal-->
             </a>
             <!-- ***** Logo fin ***** -->
-            <!-- ***** buscar fin ***** -->
-            <div class="search-input">
-              <form id="search" action="#">
-                <input type="text" placeholder="Buscar" id='searchText' name="searchKeyword" onkeypress="handle" />
+            <!-- ***** buscar inicio ***** -->
+            <div class="search-input" style="position: relative;">
+              <form id="search" action="#" onsubmit="return false;">
+                <input type="text" placeholder="Buscar..." id='searchText' name="searchKeyword" autocomplete="off" />
                 <i class="fa fa-search"></i>
               </form>
+              <div id="searchSuggestions" class="suggestions-list" style="display: none;"></div>
             </div>
             <!-- ***** buscar fin ***** -->
             <!-- ***** Navbar ***** -->
             <ul class="nav">
               <li><a href="index.html" class="active">INICIO</a></li>
-              <li><a href="browse.html">ISO/OGC</a></li>
-              <li><a href="details.html">ArcGIS</a></li>
-              <li><a href="streams.html">QGIS</a></li>
-              <li><a href="profile.html">BDE/WebGIS</a></li>
+              <li><a href="iso-ogc.html">ISO/OGC</a></li>
+              <li><a href="arcgis.html">ArcGIS</a></li>
+              <li><a href="qgis.html">QGIS</a></li>
+              <li><a href="bde-webgis.html">BDE/WebGIS</a></li>
               <li></li>
               <!-- <li><a href="profile.html">BDE/WebGIS<img src="assets/images/profile-header.jpg" alt=""></a></li>-->
             </ul>
@@ -103,20 +104,28 @@
                 <div class="col-lg-12">
                   <div class="item">
                     <div class="icon text-center">
-                      <img src="assets/images/icono-diccionario.avif" alt="" style="max-width: 60px; border-radius: 50%;">
+                      <img src="assets/images/icono-diccionario.avif" alt=""
+                        style="max-width: 60px; border-radius: 50%;">
                     </div><br>
                     <h4 style="text-align: center;">Diccionario Técnico Geoespacial (Inglés-Español)</h4><br>
-                    <p style="color: rgb(254, 255, 255);">El diccionario contiene términos y definiciones utilizados en el campo de la geografía espacial y la geoinformática. Proporciona traducciones 
-                      de términos técnicos del inglés al español, facilitando la comprensión y el uso de estos términos en contextos relacionados con 
-                      la geografía, los sistemas de información geográfica (SIG), la cartografía, la teledetección, entre otros.</p><br>
+                    <p style="color: rgb(254, 255, 255);">El diccionario contiene términos y definiciones utilizados en
+                      el campo de la geografía espacial y la geoinformática. Proporciona traducciones
+                      de términos técnicos del inglés al español, facilitando la comprensión y el uso de estos términos
+                      en contextos relacionados con
+                      la geografía, los sistemas de información geográfica (SIG), la cartografía, la teledetección,
+                      entre otros.</p><br>
 
-                    <p style="color: rgb(254, 255, 255);">El diccionario abarca una amplia gama de términos relacionados con la geografía espacial, incluyendo conceptos fundamentales, tecnologías, 
-                      metodologías y aplicaciones en el ámbito de la geoinform  ática. Es una herramienta útil para profesionales, estudiantes e investigadores que trabajan 
-                      en el campo de la geografía y la geoinformática, ya que les permite acceder 
+                    <p style="color: rgb(254, 255, 255);">El diccionario abarca una amplia gama de términos relacionados
+                      con la geografía espacial, incluyendo conceptos fundamentales, tecnologías,
+                      metodologías y aplicaciones en el ámbito de la geoinform ática. Es una herramienta útil para
+                      profesionales, estudiantes e investigadores que trabajan
+                      en el campo de la geografía y la geoinformática, ya que les permite acceder
                       a definiciones claras y precisas de términos técnicos en su idioma nativo.</p><br>
 
-                    <p style="color: rgb(254, 255, 255);">Actualizamos regularmente para incluir nuevos términos y reflejar los avances en el campo de la geografía espacial y la geoinformática. Además, 
-                      se basa en fuentes confiables y reconocidas en el ámbito de la geografía y la geoinformática, como el Instituto Geográfico Nacional (IGN) de España, 
+                    <p style="color: rgb(254, 255, 255);">Actualizamos regularmente para incluir nuevos términos y
+                      reflejar los avances en el campo de la geografía espacial y la geoinformática. Además,
+                      se basa en fuentes confiables y reconocidas en el ámbito de la geografía y la geoinformática, como
+                      el Instituto Geográfico Nacional (IGN) de España,
                       para garantizar la precisión y la relevancia de los términos incluidos.</p><br>
 
                     <p style="color: rgb(254, 255, 255);">
@@ -125,16 +134,22 @@
                     </p><br>
 
                     <p style="color: rgb(254, 255, 255);">
-                      Damos definiciones claras y precisas de términos técnicos en español, en donde abordamos conceptos fundamentales refiriendonos 
-                      a las normas ISO, OGC, ArcGIS, QGIS, bases de datos espaciales y WebGIS, entre otros temas relacionados con la geografía espacial y la geoinformática.
+                      Damos definiciones claras y precisas de términos técnicos en español, en donde abordamos conceptos
+                      fundamentales refiriendonos
+                      a las normas ISO, OGC, ArcGIS, QGIS, bases de datos espaciales y WebGIS, entre otros temas
+                      relacionados con la geografía espacial y la geoinformática.
                     </p>
                     <br>
-                    <p style="color: rgb(254, 255, 255);">Es una herramienta valiosa para aquellos que trabajan en el campo de la geografía espacial y la geoinformática, ya que 
-                      proporciona definiciones claras y precisas de términos técnicos en español, facilitando la comprensión y el uso de estos términos 
-                      en contextos relacionados con la geografía, los sistemas de información geográfica (SIG), la cartografía, la teledetección, entre otros.</p><br>
+                    <p style="color: rgb(254, 255, 255);">Es una herramienta valiosa para aquellos que trabajan en el
+                      campo de la geografía espacial y la geoinformática, ya que
+                      proporciona definiciones claras y precisas de términos técnicos en español, facilitando la
+                      comprensión y el uso de estos términos
+                      en contextos relacionados con la geografía, los sistemas de información geográfica (SIG), la
+                      cartografía, la teledetección, entre otros.</p><br>
                     </p>
                     <br>
-                    <p>Fuente: <a href="https://www.esri.com/en-us/what-is-gis/overview">Environmental Systems Research Institute (ESRI)</a></p>
+                    <p>Fuente: <a href="https://www.esri.com/en-us/what-is-gis/overview">Environmental Systems Research
+                        Institute (ESRI)</a></p>
                   </div>
                 </div>
               </div>

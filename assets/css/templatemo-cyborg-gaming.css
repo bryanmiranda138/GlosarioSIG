@@ -41,6 +41,38 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+.suggestions-list {
+    position: absolute;
+    top: 50px; /* Ajusta según la altura de tu input */
+    left: 0;
+    width: 100%;
+    background-color: #27292a; /* Color oscuro similar al menú */
+    border-radius: 23px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    display: none;
+}
+
+.suggestion-item {
+    padding: 12px 20px;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background-color: #e75e8d; /* Color rosa de la plantilla Cyborg */
+    color: #fff;
+}
+
 .clearfix:after {
   content: ".";
   display: block;

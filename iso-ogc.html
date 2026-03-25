@@ -4,16 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-
   <title>Glosario SIG</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Additional CSS Files -->
+
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
   <link rel="stylesheet" href="assets/css/owl.css">
@@ -22,7 +19,6 @@
 </head>
 
 <body>
-
   <!-- ***** animación inicio ***** -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
@@ -34,55 +30,45 @@
       </div>
     </div>
   </div>
-<!-- ***** animación fin ***** -->
-
-  <!-- ***** Header  ***** -->
+  <!-- ***** animación fin ***** -->
   <header class="header-area header-sticky">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-            <!-- ***** Logo  ***** -->
             <a href="index.html" class="logo">
               <img src="assets/images/logo sig.png" alt="">
             </a>
-            <!-- ***** Logo  ***** -->
-            <!-- ***** Search End ***** -->
-            <div class="search-input">
-              <form id="search" action="#">
-                <input type="text" placeholder="Buscar" id='searchText' name="searchKeyword"
-                  onkeypress="handle" />
+            <div class="search-input" style="position: relative;">
+              <form id="search" action="#" onsubmit="return false;">
+                <input type="text" placeholder="Buscar..." id='searchText' name="searchKeyword" autocomplete="off" />
                 <i class="fa fa-search"></i>
               </form>
+              <div id="searchSuggestions" class="suggestions-list" style="display: none;"></div>
             </div>
-            <!-- ***** Search End ***** -->
-            <!-- ***** Navbar ***** -->
             <ul class="nav">
               <li><a href="index.html">INICIO</a></li>
-              <li><a href="browse.html">ISO/OGC</a></li>
-              <li><a href="details.html">ArcGIS</a></li>
-              <li><a href="streams.html">QGIS</a></li>
-              <li><a href="profile.html" class="active">BDE/WebGIS</a></li>
+              <li><a href="iso-ogc.html" class="active">ISO/OGC</a></li>
+              <li><a href="arcgis.html">ArcGIS</a></li>
+              <li><a href="qgis.html">QGIS</a></li>
+              <li><a href="bde-webgis.html">BDE/WebGIS</a></li>
               <li></li>
               <!-- <li><a href="profile.html">BDE/WebGIS<img src="assets/images/profile-header.jpg" alt=""></a></li>-->
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
-            <!-- ***** Navbar  ***** -->
           </nav>
         </div>
       </div>
     </div>
   </header>
-  <!-- ***** Header fin ***** -->
-
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
-          <!-- ***** Banner  ***** -->
-          <div class="main-bannerPostgre">
+          <!-- ***** Banner Start ***** -->
+          <div class="main-bannerIso">
             <!-- <div class="row">
               <div class="col-lg-7">
                 <div class="header-text">
@@ -95,21 +81,20 @@
               </div>
             </div> -->
           </div>
-          <!-- ***** Banner ***** -->
+          <!-- ***** Banner End ***** -->
         </div>
       </div>
     </div>
   </div>
-
-
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
+
           <div class="start-stream header-text">
             <div class="col-lg-12">
               <div class="heading-section">
-                <h4><em>Glosario</em> Bases de Datos Espaciales y WebGIS</h4>
+                <h4><em>Glosario</em> Normas ISO 19100/OGC</h4>
               </div>
               <div class="row">
                 <div class="col-lg-4">
@@ -154,6 +139,7 @@
       </div>
     </div>
   </div>
+
   <footer>
     <div class="container">
       <div class="row">
@@ -165,8 +151,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/isotope.min.js"></script>
